@@ -1,4 +1,6 @@
 import logging
+import argparse
+import sys
 
 # Set the log output file, and the log level
 
@@ -24,3 +26,15 @@ def get(name):
     '''
     logging.error('FIXME: Unimplemented - get({!r}, {!r})'.format(name))
     return ''
+
+def main():
+    '''
+    Main function
+    '''
+    logging.info('Construction parser')
+    parser = argparse.ArgumentParser(description='Store and retrieve snippets of text')
+    arguments = parser.parse_args(sys.argv[1:])
+
+if __name__ =="__main__":
+    main()
+    
