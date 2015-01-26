@@ -24,8 +24,8 @@ def get(name):
     
     Returns the snippet
     '''
-    logging.error('FIXME: Unimplemented - get({!r}, {!r})'.format(name))
-    return ''
+    logging.error('FIXME: Unimplemented - get({!r})'.format(name))
+    return ' '
 
 def main():
     '''
@@ -57,7 +57,7 @@ def main():
         name, snippet = put(**arguments)
         print('Stored {!r} as {!r}'.format(snippet, name))
     elif command == 'get':
-        snippet = get(**arguments)
+        snippet = get(arguments)
         print('Retrieved snippet: {!r}'.format(snippet))
 
 if __name__ =="__main__":
