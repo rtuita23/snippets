@@ -39,11 +39,26 @@ def main():
     # Subparser for the put command
     logging.debug('Constructing put subparser')
     put_parser = subparsers.add_parser('put', help = 'Store a snippet')
-    put_parser.add_argument('name1', help='The name of the snippet')
-    put_parser.add_argument('snippet1', help='The snippet text')
+    put_parser.add_argument('name', help='The name of the snippet')
+    put_parser.add_argument('snippet', help='The snippet text')
     
+    # Subparser for the get command
+    logging.debug('Constructing get subparser')
+    get_parser = subparsers.add_parser('get', help='Get a snippet')
+    get_parser.add_argument('name', help='Name of snippet')
+       
     arguments = parser.parse_args(sys.argv[1:])
+    
+    # Converts parsed arguments from Namespace to dictionary
+    arguments = vars(arguments)
+    command = arguments.pop('command')
+    
+    if command == 'put':
+        name, snippet = put(**arguments)
+        print('Stored {!r} as {!r}'.format(snippet, name))
+    elif command == 'get':
+        snippet = get(**arguments)
+        print('Retrieved snippet: {!r}'.format(snippet))
 
 if __name__ =="__main__":
     main()
-    1
